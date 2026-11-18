@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les recettes de Mamita</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <header>
+        <h1>Les recettes de Mamita</h1>
+        <p>Découvrez les meilleures recettes de grand-mère, saison par saison, adaptées à toustes.</p>
+        <nav aria-label = "Main navigation">
+            <ul>
+                <li></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id = "catalogue">
+            <h2>Trouvez la recette qui vous correspond</h2>
+            <form id="filter-form" action = "{{url_for('index')}}#catalogue" method="get" aria-describedby="filter-note">
+                    <label for="diet-det">Diet</label>
+                    <select id="diet-det" name="diet">
+                        <option value="">All diets</option>
+                        {% for diet in diets %}
+                            <option value="{{ diet }}" {%if diet == selected_diet %}selected{%endif%}>{{diet}}</option>
+                        {%endfor%}
+                    </select>
+                    <label for="season-det">Season</label>
+                    <select id="season-det" name="season">
+                        <option value="">All seasons</option>
+                        {% for season in seasons %}
+                            <option value="{{ season }}" {%if season == selected_season %}selected{%endif%}>{{season}}</option>
+                        {%endfor%}
+                    </select>
+                    <label for="gluten-det">Gluten Free option</label>
+                    <select id="gluten-det" name="glu">
+                        <option value="">All diets</option>
+                        {% for glu in gluten %}
+                            <option value="{{ glu }}" {%if glu == selected_gluten %}selected{%endif%}>{{glu}}</option>
+                        {%endfor%}
+                    </select>
+                    <label for="lactose-det">Lactose Free option</label>
+                    <select id="lactose-det" name="lac">
+                        <option value="">All diets</option>
+                        {% for lac in lactose %}
+                            <option value="{{ lac }}" {%if lac == selected_lactose %}selected{%endif%}>{{lac}}</option>
+                        {%endfor%}
+                    </select>
+                    <label for="taste-det">Salty or Sweet</label>
+                    <select id="taste-det" name="tas">
+                        <option value="">All tastes</option>
+                        {% for tas in taste %}
+                            <option value="{{ tas }}" {%if tas == selected_taste %}selected{%endif%}>{{tas}}</option>
+                        {%endfor%}
+                    </select>
+                    <label for="price-det">Price range</label>
+                    <select id="price-det" name="price">
+                        <option value="">All prices</option>
+                        {% for price in prices %}
+                            <option value="{{ price }}" {%if price == selected_prices %}selected{%endif%}>{{price}}</option>
+                        {%endfor%}
+                    </select>
+                    <label for="time-det">Time</label>
+                    <select id="time-det" name="tim">
+                        <option value="">All recipes</option>
+                        {% for tim in time %}
+                            <option value="{{ tim }}" {%if tim == selected_time %}selected{%endif%}>{{tim}}</option>
+                        {%endfor%}
+                    </select>
+                    <div class = "form-action">
+                        <button type="submit">Search recipes</button>
+                        <a class="reset-link" href="{{url_for('index')}}">Reset fields</a>
+                    </div>
+            </form>
+            <table>
+                <caption>Recipes</caption>
+                <thead>
+                    <tr>
+                        {% for header in headers %}
+                        <th>{{header}}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row['# Recipe'] }}</td>
+                        <td>{{ row['Season'] }}</td>
+                        <td>{{ row['Diet'] }}</td>
+                        <td>{{ row['Gluten Free'] }}</td>
+                        <td>{{ row['Lactose Free'] }}</td>
+                        <td>{{ row['Taste'] }}</td>
+                        <td>{{ row['Price'] }}</td>
+                        <td>{{ row['Time'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
