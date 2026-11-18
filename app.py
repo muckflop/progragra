@@ -19,7 +19,7 @@ def filter_data(data, header):
      lactose = request.args.get("lac","")
      taste = request.args.get("tas","")
      prices = request.args.get("price","")
-     time = request.args.get("time","")
+     time = request.args.get("tim","")
      filtered = []
      for row in data:
           if diets and row.get("Diet") != diets:
@@ -70,7 +70,7 @@ def index():
                            selected_lactose=request.args.get("lac", ""),
                            selected_taste=request.args.get("tas",""),
                            selected_prices=request.args.get("price", ""),
-                           selected_time=request.args.get("time", ""),
+                           selected_time=request.args.get("tim", ""),
                            total=len(filtered_data),
                            original_total=len(data))
 

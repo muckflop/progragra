@@ -86,14 +86,9 @@
                 <tbody>
                     {% for row in data %}
                     <tr>
-                        <td>{{ row['# Recipe'] }}</td>
-                        <td>{{ row['Season'] }}</td>
-                        <td>{{ row['Diet'] }}</td>
-                        <td>{{ row['Gluten Free'] }}</td>
-                        <td>{{ row['Lactose Free'] }}</td>
-                        <td>{{ row['Taste'] }}</td>
-                        <td>{{ row['Price'] }}</td>
-                        <td>{{ row['Time'] }}</td>
+                        {% for value in row.values() %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
                     </tr>
                     {% endfor %}
                 </tbody>
