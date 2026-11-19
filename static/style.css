@@ -267,24 +267,7 @@ tbody tr:hover {
 }
 
 /* ==============================
-  8. FOOTER
-============================== */
-
-footer {
-   width: 100%;
-   max-width: 1100px;
-   margin: 0 auto;
-   padding: 0 1.5rem 2rem;
-   color: #6d302b;
-   font-size: 0.9rem;
-}
-
-footer a {
-   color: #b21719;
-}
-
-/* ==============================
-  9. RESPONSIVE DESIGN
+  8. RESPONSIVE DESIGN
 ============================== */
 
 @media (max-width: 600px) {
