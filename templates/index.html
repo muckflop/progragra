@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les recettes de Mamita</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Les recettes de Mamita</h1>
-        <p>Découvrez les meilleures recettes de grand-mère, saison par saison, adaptées à toustes.</p>
+        <h1>Mamita's recipes</h1>
+        <p>We present to you a varied selection of the best recipes of the web.</p>
+        <div class="photos">
+            <img src="{{ url_for('static', filename='mamita3.jpg') }}" alt="mamita3">       
+            <img src="{{ url_for('static', filename='mamita.jpg') }}" alt="mamita">
+            <img src="{{ url_for('static', filename='mamita2.jpg') }}" alt="mamita2">
+        </div>
         <nav aria-label = "Main navigation">
             <a href="#catalogue">Recipes catalogue</a>
+            <a href="#vegetarian">Veggie and Vegan</a>
+            <a href="#seasons">Seasonnal recipes</a>
         </nav>
     </header>
     <main>
+        <section id = "about">
+            <p>Tired of always having to wonder what to eat tonight? Tired of making the same recipes over and over? We’re here to help. Mamita’s Recipes has put together a small selection of the best recipes from the web. There’s something for everyone: no matter the season, your diet, your budget, how much time you have, or whether you’re in the mood for something sweet or savory, you’ll find the recipe you need. Just use the filters below!</p>
+        </section>
         <section id = "catalogue">
-            <h2>Trouvez la recette qui vous correspond</h2>
+            <h2>Find the recipe that suits you !</h2>
             <form id="filter-form" action = "{{url_for('index')}}#catalogue" method="get" aria-describedby="filter-note">
                     <label for="diet-det">Diet</label>
                     <select id="diet-det" name="diet">
@@ -91,6 +102,18 @@
                     {% endfor %}
                 </tbody>
             </table>
+        </section>
+        <section id = "vegetarian">
+            <h3>Why vegetarian and vegan recipes ?</h3>
+            <p>
+                You’ve never tried vegetarian or vegan recipes? You’re afraid that it will not be nutritious enough, or that it will not be good? Now is your moment ! Vegetarian and vegan recipes have a much lower carbon footprint than recipes with meat, and they can even be healthier. The vegetarian and vegan recipes that we have chosen for you are nutritionally complete, healthy, and tasty. You will at the same time act for climate change, make an ethical move, and eat healthy and tasty food. Don’t hesitate anymore !
+            </p>
+        </section>
+        <section id = "seasons">
+            <h3>Why four season recipes?</h3>
+            <p>
+                Adapting your cooking to the season has many advantages. Seasonal products are grown nearer to your house; they are fresher and tastier. Therefore, eating seasonal products helps the environment, your health, and the taste of your food ! We have also adapted the recipes according to their level of comfort or vibe: eating soups is more comforting in winter, and too hot for summer, for example.
+            </p>
         </section>
     </main>
 </body>
