@@ -11,7 +11,7 @@
     <header>
         <h1>Mamita's recipes</h1>
         <p>We present to you a varied selection of the best recipes of the web.</p>
-        <div class="photos">
+        <div class="header">
             <img src="{{ url_for('static', filename='mamita3.jpg') }}" alt="mamita3">       
             <img src="{{ url_for('static', filename='mamita.jpg') }}" alt="mamita">
             <img src="{{ url_for('static', filename='mamita2.jpg') }}" alt="mamita2">
@@ -88,15 +88,25 @@
                 <thead>
                     <tr>
                         {% for header in headers %}
-                        <th>{{header}}</th>
+                            {%if header != "Link"%}
+                            <th>{{header}}</th>
+                            {%endif%}
                         {% endfor %}
                     </tr>
                 </thead>
                 <tbody>
                     {% for row in data %}
                     <tr>
-                        {% for value in row.values() %}
-                        <td>{{ value }}</td>
+                        {% for header in headers %}
+                            {% if header != "Link" %}
+                            <td>
+                                {% if header == "Recipe" and row.get("Link")%}
+                                    <a href = "{{row['Link']}}" target="_blank" rel="noopener norefferer">{{row[header]}}</a>
+                                {%else%}
+                                    {{row[header]}}
+                                {%endif%}
+                            </td>
+                            {% endif %}
                         {% endfor %}
                     </tr>
                     {% endfor %}
@@ -108,12 +118,39 @@
             <p>
                 You’ve never tried vegetarian or vegan recipes? You’re afraid that it will not be nutritious enough, or that it will not be good? Now is your moment ! Vegetarian and vegan recipes have a much lower carbon footprint than recipes with meat, and they can even be healthier. The vegetarian and vegan recipes that we have chosen for you are nutritionally complete, healthy, and tasty. You will at the same time act for climate change, make an ethical move, and eat healthy and tasty food. Don’t hesitate anymore !
             </p>
+            <h5>These recipes will change your mind !</h5>
+            <div class="photos">
+                <a href = "https://www.recette-de-grand-mere.com/cuisine/recette-de-curry-vert-de-pois-chiches-a-la-thai/">
+                    <img src="{{ url_for('static', filename='vg1.png') }}" alt="vg1">
+                </a>  
+                <a href = "https://www.bbc.co.uk/food/recipes/riz_au_lait_rice_pudding_08565">
+                    <img src="{{ url_for('static', filename='vegan.png') }}" alt="vegan">
+                </a> 
+                <a href = "https://www.cuisineactuelle.fr/recettes/flamiche-aux-poireaux-214223">
+                    <img src="{{ url_for('static', filename='vg2.png') }}" alt="vg2">
+                </a>
+            </div>
         </section>
         <section id = "seasons">
             <h3>Why four season recipes?</h3>
             <p>
                 Adapting your cooking to the season has many advantages. Seasonal products are grown nearer to your house; they are fresher and tastier. Therefore, eating seasonal products helps the environment, your health, and the taste of your food ! We have also adapted the recipes according to their level of comfort or vibe: eating soups is more comforting in winter, and too hot for summer, for example.
             </p>
+            <h5>Try some of our best seasonal recipes below !</h5>
+            <div class="photos">
+                <a href = "https://www.cuisineactuelle.fr/recettes/pancakes-de-petit-pois-au-saumon-238437">
+                    <img src="{{ url_for('static', filename='spring.png') }}" alt="spring">
+                </a>  
+                <a href = "https://www.ladycoquillette.fr/2018/07/31/sorbet-à-l-abricot/">
+                    <img src="{{ url_for('static', filename='summer.png') }}" alt="summer">
+                </a> 
+                <a href = "https://lesrecoltesdumonde.com/actualites/pot-au-feu-recette-traditionnelle">
+                    <img src="{{ url_for('static', filename='autumn.png') }}" alt="autumn">
+                </a>
+                <a href = "https://www.cuisineaz.com/recettes/tarte-tatin-sans-gluten-101174.aspx">
+                    <img src="{{ url_for('static', filename='winter.png') }}" alt="winter">
+                </a>
+            </div>
         </section>
     </main>
 </body>

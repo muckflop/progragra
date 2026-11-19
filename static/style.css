@@ -26,14 +26,14 @@ header {
    text-align: center;
 }
 
-.photos {
+.header {
    display: flex;
    justify-content: center;
    gap: 20px;
    flex-wrap: wrap;
 }
 
-.photos img {
+.header img {
    width: 30%;
    max-width: 300px;
    height: 200px;
@@ -108,6 +108,29 @@ section h2 {
    color: #b21719;
 }
 
+
+.photos {
+    display: flex;
+    justify-content: center;
+    gap: 75px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.photos a {
+    display: block;
+    flex: 1 1 0;
+    max-width: 165px;
+    text-decoration: none;
+}
+
+.photos img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
 /* ==============================
   5. FORMULAIRE ET FILTRES
 ============================== */
@@ -177,6 +200,7 @@ button:hover {
    background-color: #861012;
 }
 
+
 button:focus-visible,
 a:focus-visible {
    outline: 3px solid #b21719;
@@ -194,6 +218,7 @@ a:focus-visible {
    color: #861012;
 }
 
+
 /* ==============================
   7. TABLEAU DES RECETTES
 ============================== */
@@ -203,6 +228,14 @@ table {
    border-collapse: collapse;
    text-align: left;
    background-color: #ffffff;
+}
+
+table a {
+  color: #b21719;
+}
+
+table a:visited {
+  color: #743A3A;
 }
 
 caption {
